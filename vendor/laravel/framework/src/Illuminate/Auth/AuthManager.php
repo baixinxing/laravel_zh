@@ -11,37 +11,37 @@ class AuthManager implements FactoryContract
     use CreatesUserProviders;
 
     /**
-     * The application instance.
+     * 应用程序实例。
      *
      * @var \Illuminate\Foundation\Application
      */
     protected $app;
 
     /**
-     * The registered custom driver creators.
+     * 注册的自定义驱动程序创建者。
      *
      * @var array
      */
     protected $customCreators = [];
 
     /**
-     * The array of created "drivers".
+     * 创建“驱动程序”的数组。
      *
      * @var array
      */
     protected $guards = [];
 
     /**
-     * The user resolver shared by various services.
+     * 由各种服务共享的用户解析器。
      *
-     * Determines the default user for Gate, Request, and the Authenticatable contract.
+     * 确定Gate，Request和Authenticatable契约的默认用户。
      *
      * @var \Closure
      */
     protected $userResolver;
 
     /**
-     * Create a new Auth manager instance.
+     * 创建一个新的Auth管理器实例。
      *
      * @param  \Illuminate\Foundation\Application  $app
      * @return void

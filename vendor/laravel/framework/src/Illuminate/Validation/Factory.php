@@ -11,21 +11,21 @@ use Illuminate\Contracts\Validation\Factory as FactoryContract;
 class Factory implements FactoryContract
 {
     /**
-     * The Translator implementation.
+     * 翻译器
      *
      * @var \Illuminate\Contracts\Translation\Translator
      */
     protected $translator;
 
     /**
-     * The Presence Verifier implementation.
+     * 验证者
      *
      * @var \Illuminate\Validation\PresenceVerifierInterface
      */
     protected $verifier;
 
     /**
-     * The IoC container instance.
+     * 控制反转容器
      *
      * @var \Illuminate\Contracts\Container\Container
      */
@@ -87,12 +87,12 @@ class Factory implements FactoryContract
     }
 
     /**
-     * Create a new Validator instance.
+     * 创建一个验证器实例
      *
-     * @param  array  $data
-     * @param  array  $rules
-     * @param  array  $messages
-     * @param  array  $customAttributes
+     * @param  array  $data  数据
+     * @param  array  $rules 规则
+     * @param  array  $messages 信息
+     * @param  array  $customAttributes 自定义属性
      * @return \Illuminate\Validation\Validator
      */
     public function make(array $data, array $rules, array $messages = [], array $customAttributes = [])
@@ -103,7 +103,7 @@ class Factory implements FactoryContract
         $validator = $this->resolve(
             $data, $rules, $messages, $customAttributes
         );
-
+        //如果验证者存在
         if (! is_null($this->verifier)) {
             $validator->setPresenceVerifier($this->verifier);
         }
@@ -121,7 +121,7 @@ class Factory implements FactoryContract
     }
 
     /**
-     * Validate the given data against the provided rules.
+     * 根据提供的规则验证给定的数据。
      *
      * @param  array  $data
      * @param  array  $rules
@@ -137,7 +137,7 @@ class Factory implements FactoryContract
     }
 
     /**
-     * Resolve a new Validator instance.
+     * 解析一个新的验证器实例。
      *
      * @param  array  $data
      * @param  array  $rules
