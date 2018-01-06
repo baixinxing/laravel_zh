@@ -7,9 +7,9 @@ use Illuminate\Contracts\Events\Dispatcher;
 trait HasEvents
 {
     /**
-     * The event map for the model.
+     * 模型的事件图,派遣事件的盒子
      *
-     * Allows for object-based events for native Eloquent events.
+     * 允许针对本地Eloquent事件的基于对象的事件。
      *
      * @var array
      */
