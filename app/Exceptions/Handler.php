@@ -8,7 +8,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 class Handler extends ExceptionHandler
 {
     /**
-     * A list of the exception types that are not reported.
+     * 未报告的异常类型的列表。
      *
      * @var array
      */
@@ -17,7 +17,7 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * A list of the inputs that are never flashed for validation exceptions.
+     * 不会出现验证异常的输入列表。
      *
      * @var array
      */
@@ -27,9 +27,9 @@ class Handler extends ExceptionHandler
     ];
 
     /**
-     * Report or log an exception.
+     * 报告或记录一个异常。
      *
-     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
+     * 这是向Sentry，Bugsnag等发送例外的好地方
      *
      * @param  \Exception  $exception
      * @return void
@@ -40,7 +40,7 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * Render an exception into an HTTP response.
+     * 将异常呈现给HTTP响应。
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -17,15 +18,16 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
     /**
-     * Define your route model bindings, pattern filters, etc.
+     * 定义全局模式
+     * 定义您的路由模型绑定，模式过滤器等
      *
      * @return void
      */
-    public function boot()
+    public function boot(Router $router)
     {
-        //
-
-        parent::boot();
+        parent::boot($router);
+        $router->model('user', 'App\Model\User');
+        $router->pattern('id', '[0-9]+');
     }
 
     /**
