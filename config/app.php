@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Laravel源码阅读'),
 
     /*
     |--------------------------------------------------------------------------
@@ -110,18 +110,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Logging Configuration
+    | 日志配置
     |--------------------------------------------------------------------------
     |
-    | Here you may configure the log settings for your application. Out of
-    | the box, Laravel uses the Monolog PHP logging library. This gives
-    | you a variety of powerful log handlers / formatters to utilize.
+    | 允许到配置参数
+    | single：单个文件
+    | daily：每天一个文件 按日期命名
+    | syslog：系统日志
+    | errorlog：错误日志 php-fpm到错误信息
     |
-    | Available Settings: "single", "daily", "syslog", "errorlog"
     |
     */
 
-    'log' => env('APP_LOG', 'single'),
+    'log' => env('APP_LOG', 'daily'),
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
@@ -176,6 +177,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        // 日志查看器
+        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],
 
