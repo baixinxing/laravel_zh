@@ -1030,7 +1030,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * Define a callback to be used to configure Monolog.
+     * 定义用于配置Monolog的回调。
      *
      * @param  callable  $callback
      * @return $this
@@ -1043,7 +1043,8 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * Determine if the application has a custom Monolog configurator.
+     * 确定应用程序是否具有自定义的Monolog配置程序。
+     * 
      *
      * @return bool
      */

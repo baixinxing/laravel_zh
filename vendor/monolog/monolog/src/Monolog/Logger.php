@@ -27,57 +27,57 @@ use Psr\Log\InvalidArgumentException;
 class Logger implements LoggerInterface
 {
     /**
-     * Detailed debug information
+     * 详细的调试信息
      */
     const DEBUG = 100;
 
     /**
-     * Interesting events
+     * 有趣的事件
      *
-     * Examples: User logs in, SQL logs.
+     * 列如: 用户日志, 数据库日志.
      */
     const INFO = 200;
 
     /**
-     * Uncommon events
+     * 罕见的事件
      */
     const NOTICE = 250;
 
     /**
-     * Exceptional occurrences that are not errors
+     * 特殊事件不是错误
      *
-     * Examples: Use of deprecated APIs, poor use of an API,
-     * undesirable things that are not necessarily wrong.
+     * 例如: 弃用的API接口, API使用不当,
+     * 不可取的事情不一定是错的。
      */
     const WARNING = 300;
 
     /**
-     * Runtime errors
+     * 运行时错误
      */
     const ERROR = 400;
 
     /**
-     * Critical conditions
+     * 关键条件
      *
-     * Example: Application component unavailable, unexpected exception.
+     * 例如: 应用程序组件不可用，意外异常
      */
     const CRITICAL = 500;
 
     /**
-     * Action must be taken immediately
+     * 必须立即采取行动
      *
-     * Example: Entire website down, database unavailable, etc.
-     * This should trigger the SMS alerts and wake you up.
+     * 例如: 整个网站关闭，数据库不可用等
+     * 这应该会触发短信提醒并唤醒您。
      */
     const ALERT = 550;
 
     /**
-     * Urgent alert.
+     * 紧急警报。
      */
     const EMERGENCY = 600;
 
     /**
-     * Monolog API version
+     * Monolog API版本
      *
      * This is only bumped when API breaks are done and should
      * follow the major version of the library

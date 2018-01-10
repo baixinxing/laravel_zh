@@ -8,19 +8,20 @@ use Illuminate\Support\ServiceProvider;
 class LogServiceProvider extends ServiceProvider
 {
     /**
-     * Register the service provider.
+     * 注册服务提供者
      *
      * @return void
      */
     public function register()
     {
+        //共享绑定log
         $this->app->singleton('log', function () {
             return $this->createLogger();
         });
     }
 
     /**
-     * Create the logger.
+     * 创建记录器
      *
      * @return \Illuminate\Log\Writer
      */
@@ -29,18 +30,20 @@ class LogServiceProvider extends ServiceProvider
         $log = new Writer(
             new Monolog($this->channel()), $this->app['events']
         );
-
+        
+        //设置处理器 优先调用自定义配置程序 否则调用自身配置程序
         if ($this->app->hasMonologConfigurator()) {
             call_user_func($this->app->getMonologConfigurator(), $log->getMonolog());
         } else {
             $this->configureHandler($log);
         }
-
+        
+        //返回记录器实例
         return $log;
     }
 
     /**
-     * Get the name of the log "channel".
+     * 获取日志“频道”的名称。
      *
      * @return string
      */
@@ -55,13 +58,14 @@ class LogServiceProvider extends ServiceProvider
     }
 
     /**
-     * Configure the Monolog handlers for the application.
+     * 配置应用程序的Monolog处理程序。
      *
      * @param  \Illuminate\Log\Writer  $log
      * @return void
      */
     protected function configureHandler(Writer $log)
     {
+        // 默认 configureSingleHandler
         $this->{'configure'.ucfirst($this->handler()).'Handler'}($log);
     }
 
@@ -80,7 +84,7 @@ class LogServiceProvider extends ServiceProvider
     }
 
     /**
-     * Configure the Monolog handlers for the application.
+     * 配置应用程序的Monolog处理程序。
      *
      * @param  \Illuminate\Log\Writer  $log
      * @return void
@@ -94,7 +98,7 @@ class LogServiceProvider extends ServiceProvider
     }
 
     /**
-     * Configure the Monolog handlers for the application.
+     * 配置应用程序的Monolog处理程序。
      *
      * @param  \Illuminate\Log\Writer  $log
      * @return void
@@ -116,7 +120,7 @@ class LogServiceProvider extends ServiceProvider
     }
 
     /**
-     * Get the default log handler.
+     * 获取默认日志处理程序。
      *
      * @return string
      */
