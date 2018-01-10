@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Laravel - A PHP Framework For Web Artisans
+ * Laravel - Web工匠的PHP框架
  *
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
@@ -11,7 +11,7 @@ define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
-| Register The Auto Loader
+| 注册自动加载
 |--------------------------------------------------------------------------
 |
 | Composer provides a convenient, automatically generated class loader for
@@ -39,7 +39,7 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
-| Run The Application
+| 运行应用
 |--------------------------------------------------------------------------
 |
 | Once we have the application, we can handle the incoming request

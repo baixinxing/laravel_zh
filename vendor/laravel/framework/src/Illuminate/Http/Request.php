@@ -48,12 +48,13 @@ class Request extends SymfonyRequest implements Arrayable, ArrayAccess
     protected $routeResolver;
 
     /**
-     * Create a new Illuminate HTTP request from server variables.
+     * 捕获   创建一个新的HTTP表单请求服务
      *
      * @return static
      */
     public static function capture()
     {
+        //启动覆盖HTTP方法参数
         static::enableHttpMethodParameterOverride();
 
         return static::createFromBase(SymfonyRequest::createFromGlobals());

@@ -30,23 +30,25 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the routes for the application.
+     * 确定应用程序的路由
      *
      * @return void
      */
     public function map()
     {
+        //API路由
         $this->mapApiRoutes();
 
+        //web路由
         $this->mapWebRoutes();
 
         //
     }
 
     /**
-     * Define the "web" routes for the application.
+     * 确定应用程序的web路由
      *
-     * These routes all receive session state, CSRF protection, etc.
+     * 这些路由接收session状态，CSRF保护等
      *
      * @return void
      */
@@ -58,7 +60,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "api" routes for the application.
+     * 定义应用的API路由
      *
      * These routes are typically stateless.
      *

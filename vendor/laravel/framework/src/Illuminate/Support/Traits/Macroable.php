@@ -10,17 +10,17 @@ use BadMethodCallException;
 trait Macroable
 {
     /**
-     * The registered string macros.
+     * 已注册字符串宏
      *
      * @var array
      */
     protected static $macros = [];
 
     /**
-     * Register a custom macro.
+     * 注册自定义宏
      *
-     * @param  string $name
-     * @param  object|callable  $macro
+     * @param  string $name 名称
+     * @param  object|callable  $macro 宏
      *
      * @return void
      */
@@ -30,7 +30,8 @@ trait Macroable
     }
 
     /**
-     * Mix another object into the class.
+     * @todo 此处未理解
+     * 将另一个对象混合到对象中
      *
      * @param  object  $mixin
      * @return void
@@ -82,7 +83,7 @@ trait Macroable
     }
 
     /**
-     * Dynamically handle calls to the class.
+     * 动态处理对类的调用。
      *
      * @param  string  $method
      * @param  array   $parameters

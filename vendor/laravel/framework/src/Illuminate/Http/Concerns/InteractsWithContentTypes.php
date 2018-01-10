@@ -7,10 +7,10 @@ use Illuminate\Support\Str;
 trait InteractsWithContentTypes
 {
     /**
-     * Determine if the given content types match.
+     * 确定给定的内容类型是否匹配。
      *
-     * @param  string  $actual
-     * @param  string  $type
+     * @param  string  $actual 实际
+     * @param  string  $type 类型
      * @return bool
      */
     public static function matchesType($actual, $type)
@@ -25,7 +25,7 @@ trait InteractsWithContentTypes
     }
 
     /**
-     * Determine if the request is sending JSON.
+     * 确定请求是否正在发送JSON。
      *
      * @return bool
      */
@@ -35,7 +35,7 @@ trait InteractsWithContentTypes
     }
 
     /**
-     * Determine if the current request probably expects a JSON response.
+     * 确定当前请求是否可能期望JSON响应。
      *
      * @return bool
      */
@@ -45,7 +45,7 @@ trait InteractsWithContentTypes
     }
 
     /**
-     * Determine if the current request is asking for JSON in return.
+     * 确定当前请求是否要求返回JSON。
      *
      * @return bool
      */
@@ -119,7 +119,7 @@ trait InteractsWithContentTypes
     }
 
     /**
-     * Determines whether a request accepts JSON.
+     * 确定请求是否接受JSON
      *
      * @return bool
      */
@@ -129,7 +129,7 @@ trait InteractsWithContentTypes
     }
 
     /**
-     * Determines whether a request accepts HTML.
+     * 确定请求是否接受HTML
      *
      * @return bool
      */
@@ -139,7 +139,7 @@ trait InteractsWithContentTypes
     }
 
     /**
-     * Get the data format expected in the response.
+     * 获取响应中预期的数据格式。
      *
      * @param  string  $default
      * @return string
