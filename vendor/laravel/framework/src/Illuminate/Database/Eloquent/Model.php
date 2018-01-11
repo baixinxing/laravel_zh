@@ -26,63 +26,63 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
         Concerns\GuardsAttributes;
 
     /**
-     * The connection name for the model.
+     * 模型的连接名称。
      *
      * @var string
      */
     protected $connection;
 
     /**
-     * The table associated with the model.
+     * 该表对应模型。
      *
      * @var string
      */
     protected $table;
 
     /**
-     * The primary key for the model.
+     * 模型的主键
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * The "type" of the auto-incrementing ID.
+     * 自增主键类型
      *
      * @var string
      */
     protected $keyType = 'int';
 
     /**
-     * Indicates if the IDs are auto-incrementing.
+     * 指示ID是否自动递增。
      *
      * @var bool
      */
     public $incrementing = true;
 
     /**
-     * The relations to eager load on every query.
+     * 急于加载每个查询的关系。
      *
      * @var array
      */
     protected $with = [];
 
     /**
-     * The relationship counts that should be eager loaded on every query.
+     * 在每个查询中应该加载的关系数量应该很小。
      *
      * @var array
      */
     protected $withCount = [];
 
     /**
-     * The number of models to return for pagination.
+     * 返回分页的模型数量。
      *
      * @var int
      */
     protected $perPage = 15;
 
     /**
-     * Indicates if the model exists.
+     * 指示模型是否存在。
      *
      * @var bool
      */
@@ -110,7 +110,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     protected static $dispatcher;
 
     /**
-     * The array of booted models.
+     * 引导模型的数组。
      *
      * @var array
      */
@@ -124,21 +124,21 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     protected static $globalScopes = [];
 
     /**
-     * The name of the "created at" column.
+     * created at的字段名称
      *
      * @var string
      */
     const CREATED_AT = 'created_at';
 
     /**
-     * The name of the "updated at" column.
+     * updated at的字段名称
      *
      * @var string
      */
     const UPDATED_AT = 'updated_at';
 
     /**
-     * Create a new Eloquent model instance.
+     * 创建一个新的模型实例
      *
      * @param  array  $attributes
      * @return void
@@ -153,35 +153,41 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     }
 
     /**
-     * Check if the model needs to be booted and if so, do it.
+     * 检查模型是否需要引导，如果是，请执行此操作。
      *
      * @return void
      */
     protected function bootIfNotBooted()
     {
         if (! isset(static::$booted[static::class])) {
+            
+            //引导的模型标记为已引导在引导模型数组中
             static::$booted[static::class] = true;
-
+            
+            //触发模型 booting 事件
             $this->fireModelEvent('booting', false);
 
+            //模型启动引导
             static::boot();
-
+            
+            //触发模型 booted 事件
             $this->fireModelEvent('booted', false);
         }
     }
 
     /**
-     * The "booting" method of the model.
+     * 模型的“启动”方法。
      *
      * @return void
      */
     protected static function boot()
     {
+        //启动特征
         static::bootTraits();
     }
 
     /**
-     * Boot all of the bootable traits on the model.
+     * 启动模型上的所有可启动特性。
      *
      * @return void
      */

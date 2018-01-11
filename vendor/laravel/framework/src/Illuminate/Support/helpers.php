@@ -375,28 +375,32 @@ if (! function_exists('camel_case')) {
 
 if (! function_exists('class_basename')) {
     /**
-     * Get the class "basename" of the given object / class.
+     * 获取给定对象/类的类“基本名称”。
+     * 如果是对象则返回对象的类名
      *
      * @param  string|object  $class
      * @return string
      */
     function class_basename($class)
     {
+        //统一转换为字符串类型的类命
         $class = is_object($class) ? get_class($class) : $class;
-
+        
+        //在兼容目录分隔符后，返回路径中的文件名部分。
         return basename(str_replace('\\', '/', $class));
     }
 }
 
 if (! function_exists('class_uses_recursive')) {
     /**
-     * Returns all traits used by a class, its subclasses and trait of their traits.
+     * 返回一个类，它的子类特征的所有特征。
      *
      * @param  object|string  $class
      * @return array
      */
     function class_uses_recursive($class)
     {
+        //如果类是对象统一转为字符串类型名称
         if (is_object($class)) {
             $class = get_class($class);
         }
