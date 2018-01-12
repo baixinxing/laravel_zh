@@ -8,7 +8,7 @@ use Illuminate\Contracts\Notifications\Dispatcher;
 trait RoutesNotifications
 {
     /**
-     * Send the given notification.
+     * 发送给定的通知。
      *
      * @param  mixed  $instance
      * @return void
@@ -19,7 +19,7 @@ trait RoutesNotifications
     }
 
     /**
-     * Send the given notification immediately.
+     * 立即发送给定的通知。
      *
      * @param  mixed  $instance
      * @param  array|null  $channels
@@ -31,7 +31,7 @@ trait RoutesNotifications
     }
 
     /**
-     * Get the notification routing information for the given driver.
+     * 获取给定驱动程序的通知路由信息。
      *
      * @param  string  $driver
      * @return mixed

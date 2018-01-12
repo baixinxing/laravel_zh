@@ -5,14 +5,14 @@ namespace Illuminate\Notifications\Messages;
 class DatabaseMessage
 {
     /**
-     * The data that should be stored with the notification.
+     * 这个通知的数据将被存储
      *
      * @var array
      */
     public $data = [];
 
     /**
-     * Create a new database message.
+     * 创建一个新的数据消息实例
      *
      * @param  array  $data
      * @return void

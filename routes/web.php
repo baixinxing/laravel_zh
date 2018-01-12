@@ -16,3 +16,10 @@ Route::get('/', function () {
 });
 
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//Queue 1 路由
+Route::get('mail/sendReminderEmail/{id}','MailController@sendReminderEmail');

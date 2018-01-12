@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 
-class DatabaseSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * 运行数据库填充
      *
      * @return void
      */
@@ -16,11 +17,9 @@ class DatabaseSeeder extends Seeder
             'email' => str_random(10).'@gmail.com',
             'password' => bcrypt('secret'),
         ]);
-//         $this->call(UsersTableSeeder::class);
-//        $this->call([
-//            UsersTableSeeder::class,
-//            PostsTableSeeder::class,
-//            CommentsTableSeeder::class,
-//        ]);
+        
+//        factory(\App\Models\User::class, 50)->create()->each(function ($u) {
+//            $u->posts()->save(factory(App\Post::class)->make());
+//        });
     }
 }
