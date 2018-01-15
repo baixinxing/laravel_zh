@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 class FilesystemServiceProvider extends ServiceProvider
 {
     /**
-     * Register the service provider.
+     * 注册服务提供者
      *
      * @return void
      */
@@ -19,7 +19,7 @@ class FilesystemServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the native filesystem implementation.
+     * 注册本地文件系统实现。
      *
      * @return void
      */
@@ -31,7 +31,7 @@ class FilesystemServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the driver based filesystem.
+     * 注册基础的文件驱动
      *
      * @return void
      */
@@ -49,7 +49,7 @@ class FilesystemServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the filesystem manager.
+     * 注册文件管理者
      *
      * @return void
      */
@@ -61,7 +61,7 @@ class FilesystemServiceProvider extends ServiceProvider
     }
 
     /**
-     * Get the default file driver.
+     * 注册默认驱动
      *
      * @return string
      */
@@ -71,7 +71,7 @@ class FilesystemServiceProvider extends ServiceProvider
     }
 
     /**
-     * Get the default cloud based file driver.
+     * 获取基于云端的文件驱动
      *
      * @return string
      */

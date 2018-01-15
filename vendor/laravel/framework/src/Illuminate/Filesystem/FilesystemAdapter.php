@@ -23,19 +23,21 @@ use Illuminate\Contracts\Filesystem\Filesystem as FilesystemContract;
 use Illuminate\Contracts\Filesystem\FileNotFoundException as ContractFileNotFoundException;
 
 /**
+ * 文件系统适配器
+ * 
  * @mixin \League\Flysystem\FilesystemInterface
  */
 class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
 {
     /**
-     * The Flysystem filesystem implementation.
+     * Flysystem文件系统的实现。
      *
      * @var \League\Flysystem\FilesystemInterface
      */
     protected $driver;
 
     /**
-     * Create a new filesystem adapter instance.
+     * 创建一个新的文件系统适配器实例。
      *
      * @param  \League\Flysystem\FilesystemInterface  $driver
      * @return void
@@ -46,7 +48,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Assert that the given file exists.
+     * 断言给定的文件存在。
      *
      * @param  string  $path
      * @return void
@@ -59,7 +61,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Assert that the given file does not exist.
+     * 断言给定的文件不存在。
      *
      * @param  string  $path
      * @return void
@@ -72,7 +74,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Determine if a file exists.
+     * 确定文件是否存在。
      *
      * @param  string  $path
      * @return bool
@@ -83,7 +85,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the full path for the file at the given "short" path.
+     * 在给定的“短”路径获取文件的完整路径。
      *
      * @param  string  $path
      * @return string
@@ -94,7 +96,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the contents of a file.
+     * 获取文件的内容。
      *
      * @param  string  $path
      * @return string
@@ -111,7 +113,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Create a streamed response for a given file.
+     * 为给定文件创建一个流式响应。
      *
      * @param  string  $path
      * @param  string|null  $name
@@ -141,7 +143,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Create a streamed download response for a given file.
+     * 为给定文件创建流式下载响应。
      *
      * @param  string  $path
      * @param  string|null  $name
@@ -154,7 +156,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Write the contents of a file.
+     * 写一个文件的内容。
      *
      * @param  string  $path
      * @param  string|resource  $contents
@@ -163,9 +165,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
      */
     public function put($path, $contents, $options = [])
     {
-        $options = is_string($options)
-                     ? ['visibility' => $options]
-                     : (array) $options;
+        $options = is_string($options)? ['visibility' => $options] : (array) $options;
 
         // If the given contents is actually a file or uploaded file instance than we will
         // automatically store the file using a stream. This provides a convenient path
@@ -181,7 +181,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Store the uploaded file on the disk.
+     * 将上传的文件存储在磁盘上。
      *
      * @param  string  $path
      * @param  \Illuminate\Http\File|\Illuminate\Http\UploadedFile  $file
@@ -194,7 +194,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Store the uploaded file on the disk with a given name.
+     * 将上传的文件以指定名称存储在磁盘上。
      *
      * @param  string  $path
      * @param  \Illuminate\Http\File|\Illuminate\Http\UploadedFile  $file
@@ -221,7 +221,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the visibility for the given path.
+     * 获取给定路径的可见性。
      *
      * @param  string  $path
      * @return string
@@ -236,7 +236,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Set the visibility for the given path.
+     * 设置给定路径的可见性。
      *
      * @param  string  $path
      * @param  string  $visibility
@@ -248,7 +248,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Prepend to a file.
+     * 预先添加到文件。
      *
      * @param  string  $path
      * @param  string  $data
@@ -265,7 +265,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Append to a file.
+     * 追加到文件。
      *
      * @param  string  $path
      * @param  string  $data
@@ -282,7 +282,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Delete the file at a given path.
+     * 删除给定路径的文件。
      *
      * @param  string|array  $paths
      * @return bool
@@ -307,7 +307,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Copy a file to a new location.
+     * 将文件复制到新的位置。
      *
      * @param  string  $from
      * @param  string  $to
@@ -319,7 +319,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Move a file to a new location.
+     * 将文件移到新的位置。
      *
      * @param  string  $from
      * @param  string  $to
@@ -331,7 +331,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the file size of a given file.
+     * 获取给定的文件大小
      *
      * @param  string  $path
      * @return int
@@ -342,7 +342,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the mime-type of a given file.
+     * 获取给定的文件的mime-type
      *
      * @param  string  $path
      * @return string|false
@@ -353,7 +353,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the file's last modification time.
+     * 获取给定的文件的修改时间
      *
      * @param  string  $path
      * @return int
@@ -364,7 +364,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the URL for the file at the given path.
+     * 获取给定路径下文件的URL。
      *
      * @param  string  $path
      * @return string
@@ -391,7 +391,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the URL for the file at the given path.
+     * 获取给定路径下文件的URL。
      *
      * @param  \League\Flysystem\AwsS3v3\AwsS3Adapter  $adapter
      * @param  string  $path
@@ -412,7 +412,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the URL for the file at the given path.
+     * 获取给定路径下文件的URL。
      *
      * @param  \League\Flysystem\Rackspace\RackspaceAdapter $adapter
      * @param  string $path
@@ -424,7 +424,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the URL for the file at the given path.
+     * 获取给定路径下文件的URL。
      *
      * @param  string  $path
      * @return string
@@ -453,7 +453,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get a temporary URL for the file at the given path.
+     * 获取给定路径中文件的临时URL。
      *
      * @param  string  $path
      * @param  \DateTimeInterface  $expiration
@@ -480,7 +480,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get a temporary URL for the file at the given path.
+     * 获取给定路径中文件的临时URL。
      *
      * @param  \League\Flysystem\AwsS3v3\AwsS3Adapter  $adapter
      * @param  string $path
@@ -503,7 +503,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get a temporary URL for the file at the given path.
+     * 获取给定路径中文件的临时URL。
      *
      * @param  \League\Flysystem\Rackspace\RackspaceAdapter  $adapter
      * @param  string  $path
@@ -521,7 +521,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Concatenate a path to a URL.
+     * 连接到URL的路径。
      *
      * @param  string $url
      * @param  string $path
@@ -533,7 +533,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get an array of all files in a directory.
+     * 获取一个目录里面所有文件到一个数组中。
      *
      * @param  string|null  $directory
      * @param  bool  $recursive
@@ -547,7 +547,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get all of the files from the given directory (recursive).
+     * 通过递归获取所有文件从给定的目录中
      *
      * @param  string|null  $directory
      * @return array
@@ -558,7 +558,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get all of the directories within a given directory.
+     * 获取给定目录中的所有目录。
      *
      * @param  string|null  $directory
      * @param  bool  $recursive
@@ -572,7 +572,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get all (recursive) of the directories within a given directory.
+     * 通过获取给定目录中的所有目录。
      *
      * @param  string|null  $directory
      * @return array
@@ -583,7 +583,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Create a directory.
+     * 创建一个目录
      *
      * @param  string  $path
      * @return bool
@@ -594,7 +594,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Recursively delete a directory.
+     * 递归删除一个目录。
      *
      * @param  string  $directory
      * @return bool
@@ -605,7 +605,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Flush the Flysystem cache.
+     * 刷新Flysystem缓存。
      *
      * @return void
      */
@@ -619,7 +619,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Get the Flysystem driver.
+     * 获取Flysystem驱动程序。
      *
      * @return \League\Flysystem\FilesystemInterface
      */
@@ -629,7 +629,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Filter directory contents by type.
+     * 按类型过滤目录内容。
      *
      * @param  array  $contents
      * @param  string  $type
@@ -645,7 +645,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Parse the given visibility value.
+     * 解析给定的可见性值。
      *
      * @param  string|null  $visibility
      * @return string|null
@@ -669,7 +669,7 @@ class FilesystemAdapter implements FilesystemContract, CloudFilesystemContract
     }
 
     /**
-     * Pass dynamic methods call onto Flysystem.
+     * 通过动态方法调用Flysystem。
      *
      * @param  string  $method
      * @param  array  $parameters
