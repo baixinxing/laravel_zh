@@ -15,7 +15,8 @@
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0",
-        "rap2hpoutre/laravel-log-viewer": "*"
+        "rap2hpoutre/laravel-log-viewer": "*",
+        "baixinxing/aliyun-openapi-php-sdk": "@dev"
     },
     "autoload": {
         "classmap": [
