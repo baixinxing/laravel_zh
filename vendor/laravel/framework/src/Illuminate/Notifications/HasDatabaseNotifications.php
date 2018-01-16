@@ -5,7 +5,7 @@ namespace Illuminate\Notifications;
 trait HasDatabaseNotifications
 {
     /**
-     * 获取实体的通知。
+     * Get the entity's notifications.
      */
     public function notifications()
     {
@@ -14,7 +14,7 @@ trait HasDatabaseNotifications
     }
 
     /**
-     * 获取实体的读取通知。
+     * Get the entity's read notifications.
      */
     public function readNotifications()
     {
@@ -23,7 +23,7 @@ trait HasDatabaseNotifications
     }
 
     /**
-     * 获取实体的未读通知。
+     * Get the entity's unread notifications.
      */
     public function unreadNotifications()
     {

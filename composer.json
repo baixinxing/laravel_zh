@@ -16,7 +16,7 @@
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0",
         "rap2hpoutre/laravel-log-viewer": "*",
-        "baixinxing/aliyun-openapi-php-sdk": "@dev"
+        "baixinxing/aliyun-openapi-php-sdk": "1.*"
     },
     "autoload": {
         "classmap": [

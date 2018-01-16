@@ -375,32 +375,28 @@ if (! function_exists('camel_case')) {
 
 if (! function_exists('class_basename')) {
     /**
-     * 获取给定对象/类的类“基本名称”。
-     * 如果是对象则返回对象的类名
+     * Get the class "basename" of the given object / class.
      *
      * @param  string|object  $class
      * @return string
      */
     function class_basename($class)
     {
-        //统一转换为字符串类型的类命
         $class = is_object($class) ? get_class($class) : $class;
-        
-        //在兼容目录分隔符后，返回路径中的文件名部分。
+
         return basename(str_replace('\\', '/', $class));
     }
 }
 
 if (! function_exists('class_uses_recursive')) {
     /**
-     * 返回一个类，它的子类特征的所有特征。
+     * Returns all traits used by a class, its subclasses and trait of their traits.
      *
      * @param  object|string  $class
      * @return array
      */
     function class_uses_recursive($class)
     {
-        //如果类是对象统一转为字符串类型名称
         if (is_object($class)) {
             $class = get_class($class);
         }
@@ -557,6 +553,8 @@ if (! function_exists('dd')) {
      */
     function dd(...$args)
     {
+        http_response_code(500);
+
         foreach ($args as $x) {
             (new Dumper)->dump($x);
         }
@@ -570,15 +568,16 @@ if (! function_exists('e')) {
      * Escape HTML special characters in a string.
      *
      * @param  \Illuminate\Contracts\Support\Htmlable|string  $value
+     * @param  bool  $doubleEncode
      * @return string
      */
-    function e($value)
+    function e($value, $doubleEncode = false)
     {
         if ($value instanceof Htmlable) {
             return $value->toHtml();
         }
 
-        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8', false);
+        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8', $doubleEncode);
     }
 }
 
@@ -721,7 +720,7 @@ if (! function_exists('optional')) {
      * @param  mixed  $value
      * @return mixed
      */
-    function optional($value)
+    function optional($value = null)
     {
         return new Optional($value);
     }
@@ -868,7 +867,7 @@ if (! function_exists('str_is')) {
     /**
      * Determine if a given string matches a given pattern.
      *
-     * @param  string  $pattern
+     * @param  string|array  $pattern
      * @param  string  $value
      * @return bool
      */

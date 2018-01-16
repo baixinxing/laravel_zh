@@ -321,7 +321,7 @@ class Container implements ArrayAccess, ContainerContract
     }
 
     /**
-     * 在容器中注册共享绑定。
+     * Register a shared binding in the container.
      *
      * @param  string|array  $abstract
      * @param  \Closure|string|null  $concrete

@@ -5,32 +5,32 @@ namespace Illuminate\Log\Events;
 class MessageLogged
 {
     /**
-     * 日志级别
+     * The log "level".
      *
      * @var string
      */
     public $level;
 
     /**
-     * 日志信息
+     * The log message.
      *
      * @var string
      */
     public $message;
 
     /**
-     * 日志上下文
+     * The log context.
      *
      * @var array
      */
     public $context;
 
     /**
-     * 创建一个新的事件实例
+     * Create a new event instance.
      *
-     * @param  string  $level   日志级别
-     * @param  string  $message 日志信息
-     * @param  array  $context  日志上下文
+     * @param  string  $level
+     * @param  string  $message
+     * @param  array  $context
      * @return void
      */
     public function __construct($level, $message, array $context = [])

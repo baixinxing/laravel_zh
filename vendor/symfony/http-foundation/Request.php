@@ -1774,7 +1774,7 @@ class Request
     }
 
     /**
-     * Gets a list of content types acceptable by the client browser.
+     * 获取客户端浏览器可接受的内容类型列表。
      *
      * @return array List of content types in preferable order
      */

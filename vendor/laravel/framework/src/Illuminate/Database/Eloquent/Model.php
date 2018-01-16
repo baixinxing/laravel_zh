@@ -26,63 +26,63 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
         Concerns\GuardsAttributes;
 
     /**
-     * 模型的连接名称。
+     * The connection name for the model.
      *
      * @var string
      */
     protected $connection;
 
     /**
-     * 该表对应模型。
+     * The table associated with the model.
      *
      * @var string
      */
     protected $table;
 
     /**
-     * 模型的主键
+     * The primary key for the model.
      *
      * @var string
      */
     protected $primaryKey = 'id';
 
     /**
-     * 自增主键类型
+     * The "type" of the auto-incrementing ID.
      *
      * @var string
      */
     protected $keyType = 'int';
 
     /**
-     * 指示ID是否自动递增。
+     * Indicates if the IDs are auto-incrementing.
      *
      * @var bool
      */
     public $incrementing = true;
 
     /**
-     * 急于加载每个查询的关系。
+     * The relations to eager load on every query.
      *
      * @var array
      */
     protected $with = [];
 
     /**
-     * 在每个查询中应该加载的关系数量应该很小。
+     * The relationship counts that should be eager loaded on every query.
      *
      * @var array
      */
     protected $withCount = [];
 
     /**
-     * 返回分页的模型数量。
+     * The number of models to return for pagination.
      *
      * @var int
      */
     protected $perPage = 15;
 
     /**
-     * 指示模型是否存在。
+     * Indicates if the model exists.
      *
      * @var bool
      */
@@ -110,7 +110,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     protected static $dispatcher;
 
     /**
-     * 引导模型的数组。
+     * The array of booted models.
      *
      * @var array
      */
@@ -124,21 +124,21 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     protected static $globalScopes = [];
 
     /**
-     * created at的字段名称
+     * The name of the "created at" column.
      *
      * @var string
      */
     const CREATED_AT = 'created_at';
 
     /**
-     * updated at的字段名称
+     * The name of the "updated at" column.
      *
      * @var string
      */
     const UPDATED_AT = 'updated_at';
 
     /**
-     * 创建一个新的模型实例
+     * Create a new Eloquent model instance.
      *
      * @param  array  $attributes
      * @return void
@@ -153,41 +153,35 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
     }
 
     /**
-     * 检查模型是否需要引导，如果是，请执行此操作。
+     * Check if the model needs to be booted and if so, do it.
      *
      * @return void
      */
     protected function bootIfNotBooted()
     {
         if (! isset(static::$booted[static::class])) {
-            
-            //引导的模型标记为已引导在引导模型数组中
             static::$booted[static::class] = true;
-            
-            //触发模型 booting 事件
+
             $this->fireModelEvent('booting', false);
 
-            //模型启动引导
             static::boot();
-            
-            //触发模型 booted 事件
+
             $this->fireModelEvent('booted', false);
         }
     }
 
     /**
-     * 模型的“启动”方法。
+     * The "booting" method of the model.
      *
      * @return void
      */
     protected static function boot()
     {
-        //启动特征
         static::bootTraits();
     }
 
     /**
-     * 启动模型上的所有可启动特性。
+     * Boot all of the bootable traits on the model.
      *
      * @return void
      */
@@ -253,6 +247,21 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
         return static::unguarded(function () use ($attributes) {
             return $this->fill($attributes);
         });
+    }
+
+    /**
+     * Qualify the given column name by the model's table.
+     *
+     * @param  string  $column
+     * @return string
+     */
+    public function qualifyColumn($column)
+    {
+        if (Str::contains($column, '.')) {
+            return $column;
+        }
+
+        return $this->getTable().'.'.$column;
     }
 
     /**
@@ -1212,7 +1221,7 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
      */
     public function getQualifiedKeyName()
     {
-        return $this->getTable().'.'.$this->getKeyName();
+        return $this->qualifyColumn($this->getKeyName());
     }
 
     /**

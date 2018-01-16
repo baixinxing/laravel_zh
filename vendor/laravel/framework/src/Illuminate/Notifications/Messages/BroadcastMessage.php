@@ -9,14 +9,14 @@ class BroadcastMessage
     use Queueable;
 
     /**
-     * 通知的数据
+     * The data for the notification.
      *
      * @var array
      */
     public $data;
 
     /**
-     * 创建一个新的消息实例
+     * Create a new message instance.
      *
      * @param  array  $data
      * @return void
@@ -27,7 +27,7 @@ class BroadcastMessage
     }
 
     /**
-     * 设置消息数据
+     * Set the message data.
      *
      * @param  array  $data
      * @return $this

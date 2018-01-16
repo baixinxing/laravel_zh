@@ -7,6 +7,9 @@ use Aliyun\Core\DefaultAcsClient;
 use Aliyun\Core\Profile\DefaultProfile;
 use Aliyun\Vod\CreateUploadVideoRequest;
 use Aliyun\Oss\OssClient;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\VideoRequest;
 
 class HomeController extends Controller
 {
@@ -26,8 +29,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(VideoRequest $request)
     {
+        $file = $request->file('file');
+
+        $localFile = $file->getRealPath();
+//        Storage::put();
+//        die(var_dump($file->getRealPath()));
+//        Storage::put();
+
         $profile = DefaultProfile::getProfile("cn-shanghai", "LTAIAxmAQecGTfvI", "b2SfZz8U2GY2toiE6sHORsEv4whhog");
         $client = new DefaultAcsClient($profile);
 
@@ -49,10 +59,11 @@ class HomeController extends Controller
         $uploadAuth = json_decode(base64_decode($createRes->UploadAuth), true);
 
 
+//        $localFile = 'C:\xampp\htdocs\laravel\storage\SampleVideo_1280x720_1mb.mp4';
         $ossClient = new OssClient($uploadAuth['AccessKeyId'], $uploadAuth['AccessKeySecret'], $uploadAddress['Endpoint'], false, $uploadAuth['SecurityToken']);
         $ossClient->setTimeout(86400 * 7);    // 设置请求超时时间，单位秒，默认是5184000秒, 建议不要设置太小，如果上传文件很大，消耗的时间会比较长
         $ossClient->setConnectTimeout(10);  // 设置连接超时时间，单位秒，默认是10秒
-        $data = $ossClient->uploadFile($uploadAddress['Bucket'], $uploadAddress['FileName'], $localFile);
+        return $data = $ossClient->uploadFile($uploadAddress['Bucket'], $uploadAddress['FileName'], $localFile);
 
         return view('home');
     }

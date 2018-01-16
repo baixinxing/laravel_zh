@@ -13,7 +13,7 @@ class Filesystem
     use Macroable;
 
     /**
-     * 确定文件或目录是否存在
+     * Determine if a file or directory exists.
      *
      * @param  string  $path
      * @return bool
@@ -24,7 +24,7 @@ class Filesystem
     }
 
     /**
-     * 获取一个文件内容
+     * Get the contents of a file.
      *
      * @param  string  $path
      * @param  bool  $lock
@@ -42,7 +42,7 @@ class Filesystem
     }
 
     /**
-     * 获取一个共享访问文件内容
+     * Get contents of a file with shared access.
      *
      * @param  string  $path
      * @return string
@@ -71,7 +71,7 @@ class Filesystem
     }
 
     /**
-     * 获取一个require文件返回内容
+     * Get the returned value of a file.
      *
      * @param  string  $path
      * @return mixed
@@ -88,7 +88,7 @@ class Filesystem
     }
 
     /**
-     * Require给到的文件一次
+     * Require the given file once.
      *
      * @param  string  $file
      * @return mixed
@@ -99,7 +99,7 @@ class Filesystem
     }
 
     /**
-     * 获取给到的路径文件MD5 HASH值
+     * Get the MD5 hash of the file at the given path.
      *
      * @param  string  $path
      * @return string
@@ -110,7 +110,7 @@ class Filesystem
     }
 
     /**
-     * 把内容写到指定文件中
+     * Write the contents of a file.
      *
      * @param  string  $path
      * @param  string  $contents
@@ -123,7 +123,7 @@ class Filesystem
     }
 
     /**
-     * 预先添加内容到文件中
+     * Prepend to a file.
      *
      * @param  string  $path
      * @param  string  $data
@@ -139,7 +139,7 @@ class Filesystem
     }
 
     /**
-     * 追加内容到文件中
+     * Append to a file.
      *
      * @param  string  $path
      * @param  string  $data
@@ -151,7 +151,7 @@ class Filesystem
     }
 
     /**
-     * 获取或设置UNIX模式一个文件或目录
+     * Get or set UNIX mode of a file or directory.
      *
      * @param  string  $path
      * @param  int  $mode
@@ -167,7 +167,7 @@ class Filesystem
     }
 
     /**
-     * 删除一个文件在给到的路径中
+     * Delete the file at a given path.
      *
      * @param  string|array  $paths
      * @return bool
@@ -192,7 +192,7 @@ class Filesystem
     }
 
     /**
-     * 移动一个文件到新的位置
+     * Move a file to a new location.
      *
      * @param  string  $path
      * @param  string  $target
@@ -204,7 +204,7 @@ class Filesystem
     }
 
     /**
-     * 复制一个文件到新的位置
+     * Copy a file to a new location.
      *
      * @param  string  $path
      * @param  string  $target
@@ -216,7 +216,7 @@ class Filesystem
     }
 
     /**
-     * 创建一个硬链接对应这个文件或目录
+     * Create a hard link to the target file or directory.
      *
      * @param  string  $target
      * @param  string  $link
@@ -234,7 +234,7 @@ class Filesystem
     }
 
     /**
-     * 从文件路径中提取文件名。
+     * Extract the file name from a file path.
      *
      * @param  string  $path
      * @return string
@@ -245,7 +245,7 @@ class Filesystem
     }
 
     /**
-     * 从文件路径中提取尾部名称组件。
+     * Extract the trailing name component from a file path.
      *
      * @param  string  $path
      * @return string
@@ -256,7 +256,7 @@ class Filesystem
     }
 
     /**
-     * 从文件路径中提取父目录。
+     * Extract the parent directory from a file path.
      *
      * @param  string  $path
      * @return string
@@ -267,7 +267,7 @@ class Filesystem
     }
 
     /**
-     * 从文件路径中提取文件扩展名。
+     * Extract the file extension from a file path.
      *
      * @param  string  $path
      * @return string
@@ -278,7 +278,7 @@ class Filesystem
     }
 
     /**
-     * 获取给到文件的类型
+     * Get the file type of a given file.
      *
      * @param  string  $path
      * @return string
@@ -289,7 +289,7 @@ class Filesystem
     }
 
     /**
-     * 获取给定文件的MIME类型。
+     * Get the mime-type of a given file.
      *
      * @param  string  $path
      * @return string|false
@@ -300,7 +300,7 @@ class Filesystem
     }
 
     /**
-     * 获取给到的文件大小
+     * Get the file size of a given file.
      *
      * @param  string  $path
      * @return int

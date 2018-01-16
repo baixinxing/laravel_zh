@@ -11,8 +11,8 @@ trait RegistersUsers
     use RedirectsUsers;
 
     /**
-     * 显示应用注册表单
-     * 
+     * Show the application registration form.
+     *
      * @return \Illuminate\Http\Response
      */
     public function showRegistrationForm()
@@ -21,25 +21,25 @@ trait RegistersUsers
     }
 
     /**
-     * 处理应用程序的注册请求。
+     * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function register(Request $request)
-    {   //验证
+    {
         $this->validator($request->all())->validate();
-        //事件
+
         event(new Registered($user = $this->create($request->all())));
-        //
+
         $this->guard()->login($user);
-        //跳转  已注册业务逻辑  之后 跳转
+
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
     }
 
     /**
-     * 让警卫在注册时使用。
+     * Get the guard to be used during registration.
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard
      */
@@ -49,7 +49,7 @@ trait RegistersUsers
     }
 
     /**
-     * 用户已注册。
+     * The user has been registered.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  mixed  $user

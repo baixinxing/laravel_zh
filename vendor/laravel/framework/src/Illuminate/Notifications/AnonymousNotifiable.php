@@ -61,7 +61,7 @@ class AnonymousNotifiable
     }
 
     /**
-     * 获取通知的主键唯一标识
+     * Get the value of the notifiable's primary key.
      *
      * @return mixed
      */

@@ -8,28 +8,28 @@ use League\Flysystem\Cached\Storage\AbstractCache;
 class Cache extends AbstractCache
 {
     /**
-     * 高速缓存存储库实现。
+     * The cache repository implementation.
      *
      * @var \Illuminate\Contracts\Cache\Repository
      */
     protected $repository;
 
     /**
-     * 缓存键
+     * The cache key.
      *
      * @var string
      */
     protected $key;
 
     /**
-     * 缓存过期时间
+     * The cache expiration time in minutes.
      *
      * @var int
      */
     protected $expire;
 
     /**
-     * 创建一个新的缓存实例
+     * Create a new cache instance.
      *
      * @param \Illuminate\Contracts\Cache\Repository  $repository
      * @param string  $key
@@ -46,7 +46,7 @@ class Cache extends AbstractCache
     }
 
     /**
-     * 加载缓存
+     * Load the cache.
      *
      * @return void
      */
@@ -60,7 +60,7 @@ class Cache extends AbstractCache
     }
 
     /**
-     * 保存缓存
+     * Persist the cache.
      *
      * @return void
      */

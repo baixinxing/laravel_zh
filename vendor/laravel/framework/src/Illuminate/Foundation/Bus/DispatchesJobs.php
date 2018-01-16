@@ -7,14 +7,13 @@ use Illuminate\Contracts\Bus\Dispatcher;
 trait DispatchesJobs
 {
     /**
-     * 派遣一个工作，以适当的处理程序。
+     * Dispatch a job to its appropriate handler.
      *
      * @param  mixed  $job
      * @return mixed
      */
     protected function dispatch($job)
     {
-        //Queue 4 命令分发
         return app(Dispatcher::class)->dispatch($job);
     }
 

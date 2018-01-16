@@ -1,23 +1,23 @@
 [
     {
         "name": "baixinxing/aliyun-openapi-php-sdk",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/baixinxing/aliyun-openapi-php-sdk.git",
-            "reference": "aebe5d8556f9127fad3f29a050e17a162d3a899c"
+            "reference": "ec2d5fc90a3dc33ae64a44758f7beb81b709028b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/baixinxing/aliyun-openapi-php-sdk/zipball/aebe5d8556f9127fad3f29a050e17a162d3a899c",
-            "reference": "aebe5d8556f9127fad3f29a050e17a162d3a899c",
+            "url": "https://files.phpcomposer.com/files/baixinxing/aliyun-openapi-php-sdk/ec2d5fc90a3dc33ae64a44758f7beb81b709028b.zip",
+            "reference": "ec2d5fc90a3dc33ae64a44758f7beb81b709028b",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3"
         },
-        "time": "2018-01-15T11:22:15+00:00",
+        "time": "2018-01-16T09:20:36+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -676,17 +676,17 @@
     },
     {
         "name": "laravel/framework",
-        "version": "v5.5.28",
-        "version_normalized": "5.5.28.0",
+        "version": "v5.5.29",
+        "version_normalized": "5.5.29.0",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/framework.git",
-            "reference": "cfafae1f2043208390a7c984e3070696f4969605"
+            "reference": "c58b6ff96fb56cc92e24545870be13cdcfcbc43a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/cfafae1f2043208390a7c984e3070696f4969605",
-            "reference": "cfafae1f2043208390a7c984e3070696f4969605",
+            "url": "https://files.phpcomposer.com/files/laravel/framework/c58b6ff96fb56cc92e24545870be13cdcfcbc43a.zip",
+            "reference": "c58b6ff96fb56cc92e24545870be13cdcfcbc43a",
             "shasum": ""
         },
         "require": {
@@ -776,7 +776,7 @@
             "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (~3.3).",
             "symfony/psr-http-message-bridge": "Required to psr7 bridging features (~1.0)."
         },
-        "time": "2017-12-26T16:24:40+00:00",
+        "time": "2018-01-15T14:07:47+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {

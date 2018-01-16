@@ -24,28 +24,28 @@ use Illuminate\Contracts\Filesystem\Factory as FactoryContract;
 class FilesystemManager implements FactoryContract
 {
     /**
-     * APP实例
+     * The application instance.
      *
      * @var \Illuminate\Contracts\Foundation\Application
      */
     protected $app;
 
     /**
-     * 已解析的文件系统驱动程序的数组。
+     * The array of resolved filesystem drivers.
      *
      * @var array
      */
     protected $disks = [];
 
     /**
-     * 注册的自定义驱动程序创建者。
+     * The registered custom driver creators.
      *
      * @var array
      */
     protected $customCreators = [];
 
     /**
-     * 创建一个新的文件系统管理器实例。
+     * Create a new filesystem manager instance.
      *
      * @param  \Illuminate\Contracts\Foundation\Application  $app
      * @return void
@@ -56,7 +56,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 获取文件系统实例。
+     * Get a filesystem instance.
      *
      * @param  string  $name
      * @return \Illuminate\Contracts\Filesystem\Filesystem
@@ -67,7 +67,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 获取文件系统实例。
+     * Get a filesystem instance.
      *
      * @param  string  $name
      * @return \Illuminate\Contracts\Filesystem\Filesystem
@@ -80,7 +80,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 获取默认的云文件系统实例。
+     * Get a default cloud filesystem instance.
      *
      * @return \Illuminate\Contracts\Filesystem\Filesystem
      */
@@ -92,7 +92,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 尝试从本地磁盘中获取缓存。
+     * Attempt to get the disk from the local cache.
      *
      * @param  string  $name
      * @return \Illuminate\Contracts\Filesystem\Filesystem
@@ -103,7 +103,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 解决给定的磁盘。
+     * Resolve the given disk.
      *
      * @param  string  $name
      * @return \Illuminate\Contracts\Filesystem\Filesystem
@@ -128,7 +128,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 调用自定义的驱动程序创建者。
+     * Call a custom driver creator.
      *
      * @param  array  $config
      * @return \Illuminate\Contracts\Filesystem\Filesystem
@@ -145,7 +145,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 创建本地驱动程序的一个实例。
+     * Create an instance of the local driver.
      *
      * @param  array  $config
      * @return \Illuminate\Contracts\Filesystem\Filesystem
@@ -164,24 +164,20 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 创建FTP驱动程序的一个实例。
+     * Create an instance of the ftp driver.
      *
      * @param  array  $config
      * @return \Illuminate\Contracts\Filesystem\Filesystem
      */
     public function createFtpDriver(array $config)
     {
-        $ftpConfig = Arr::only($config, [
-            'host', 'username', 'password', 'port', 'root', 'passive', 'ssl', 'timeout',
-        ]);
-
         return $this->adapt($this->createFlysystem(
-            new FtpAdapter($ftpConfig), $config
+            new FtpAdapter($config), $config
         ));
     }
 
     /**
-     * 创建 Amazon S3驱动程序的一个实例。
+     * Create an instance of the Amazon S3 driver.
      *
      * @param  array  $config
      * @return \Illuminate\Contracts\Filesystem\Cloud
@@ -200,7 +196,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 使用默认选项格式化给定的S3配置。
+     * Format the given S3 configuration with the default options.
      *
      * @param  array  $config
      * @return array
@@ -217,7 +213,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 创建一个Rackspace驱动程序的实例。
+     * Create an instance of the Rackspace driver.
      *
      * @param  array  $config
      * @return \Illuminate\Contracts\Filesystem\Cloud
@@ -236,7 +232,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 获取Rackspace Cloud文件容器。
+     * Get the Rackspace Cloud Files container.
      *
      * @param  \OpenCloud\Rackspace  $client
      * @param  array  $config
@@ -252,7 +248,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 用给定的适配器创建一个Flysystem实例。
+     * Create a Flysystem instance with the given adapter.
      *
      * @param  \League\Flysystem\AdapterInterface  $adapter
      * @param  array  $config
@@ -272,7 +268,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 创建一个缓存存储实例
+     * Create a cache store instance.
      *
      * @param  mixed  $config
      * @return \League\Flysystem\Cached\CacheInterface
@@ -293,7 +289,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 适应文件系统的实施。
+     * Adapt the filesystem implementation.
      *
      * @param  \League\Flysystem\FilesystemInterface  $filesystem
      * @return \Illuminate\Contracts\Filesystem\Filesystem
@@ -304,7 +300,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 设置给定的磁盘实例。
+     * Set the given disk instance.
      *
      * @param  string  $name
      * @param  mixed  $disk
@@ -316,7 +312,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 获取文件系统链接配置信息
+     * Get the filesystem connection configuration.
      *
      * @param  string  $name
      * @return array
@@ -327,7 +323,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 获取默认驱动程序名称
+     * Get the default driver name.
      *
      * @return string
      */
@@ -337,7 +333,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 获取默认云端驱动程序名称
+     * Get the default cloud driver name.
      *
      * @return string
      */
@@ -347,7 +343,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 注册一个自定义的驱动程序创建者闭包程序。
+     * Register a custom driver creator Closure.
      *
      * @param  string    $driver
      * @param  \Closure  $callback
@@ -361,7 +357,7 @@ class FilesystemManager implements FactoryContract
     }
 
     /**
-     * 动态调用默认驱动程序实例
+     * Dynamically call the default driver instance.
      *
      * @param  string  $method
      * @param  array   $parameters

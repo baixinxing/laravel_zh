@@ -41,7 +41,7 @@ class Dispatcher implements QueueingDispatcher
     protected $handlers = [];
 
     /**
-     * 队列解析器回调。
+     * The queue resolver callback.
      *
      * @var \Closure|null
      */
@@ -62,16 +62,14 @@ class Dispatcher implements QueueingDispatcher
     }
 
     /**
-     * 将一个命令分发给相应的处理程序。
+     * Dispatch a command to its appropriate handler.
      *
      * @param  mixed  $command
      * @return mixed
      */
     public function dispatch($command)
     {
-        //Queue 5 命令分发
         if ($this->queueResolver && $this->commandShouldBeQueued($command)) {
-            //Queue 7 分发到队列中
             return $this->dispatchToQueue($command);
         }
 
@@ -127,19 +125,18 @@ class Dispatcher implements QueueingDispatcher
     }
 
     /**
-     * 确定给定的命令是否应该排队。
+     * Determine if the given command should be queued.
      *
      * @param  mixed  $command
      * @return bool
      */
     protected function commandShouldBeQueued($command)
     {
-        //Queue 6 判断是否应该排队实例
         return $command instanceof ShouldQueue;
     }
 
     /**
-     * 将一个命令分发给队列后面的相应处理程序。
+     * Dispatch a command to its appropriate handler behind a queue.
      *
      * @param  mixed  $command
      * @return mixed
@@ -159,13 +156,12 @@ class Dispatcher implements QueueingDispatcher
         if (method_exists($command, 'queue')) {
             return $command->queue($queue, $command);
         }
-        
-        //
+
         return $this->pushCommandToQueue($queue, $command);
     }
 
     /**
-     * 将命令推送到给定的队列实例上。
+     * Push the command onto the given queue instance.
      *
      * @param  \Illuminate\Contracts\Queue\Queue  $queue
      * @param  mixed  $command

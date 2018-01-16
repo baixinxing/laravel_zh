@@ -29,7 +29,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
      *
      * @var string
      */
-    const VERSION = '5.5.28';
+    const VERSION = '5.5.29';
 
     /**
      * The base path for the Laravel installation.
@@ -1030,7 +1030,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * 定义用于配置Monolog的回调。
+     * Define a callback to be used to configure Monolog.
      *
      * @param  callable  $callback
      * @return $this
@@ -1043,8 +1043,7 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     }
 
     /**
-     * 确定应用程序是否具有自定义的Monolog配置程序。
-     * 
+     * Determine if the application has a custom Monolog configurator.
      *
      * @return bool
      */
@@ -1108,7 +1107,6 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
     {
         foreach ([
             'app'                  => [\Illuminate\Foundation\Application::class, \Illuminate\Contracts\Container\Container::class, \Illuminate\Contracts\Foundation\Application::class,  \Psr\Container\ContainerInterface::class],
-            //Auth 别名 Facade 指向 \Illuminate\Auth\AuthManager】
             'auth'                 => [\Illuminate\Auth\AuthManager::class, \Illuminate\Contracts\Auth\Factory::class],
             'auth.driver'          => [\Illuminate\Contracts\Auth\Guard::class],
             'blade.compiler'       => [\Illuminate\View\Compilers\BladeCompiler::class],
@@ -1140,7 +1138,6 @@ class Application extends Container implements ApplicationContract, HttpKernelIn
             'session'              => [\Illuminate\Session\SessionManager::class],
             'session.store'        => [\Illuminate\Session\Store::class, \Illuminate\Contracts\Session\Session::class],
             'url'                  => [\Illuminate\Routing\UrlGenerator::class, \Illuminate\Contracts\Routing\UrlGenerator::class],
-            //Validator 别名 Facade 指向 \Illuminate\Validation\Factory::class,
             'validator'            => [\Illuminate\Validation\Factory::class, \Illuminate\Contracts\Validation\Factory::class],
             'view'                 => [\Illuminate\View\Factory::class, \Illuminate\Contracts\View\Factory::class],
         ] as $key => $aliases) {

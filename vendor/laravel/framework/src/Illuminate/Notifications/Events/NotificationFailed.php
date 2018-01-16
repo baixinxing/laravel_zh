@@ -33,7 +33,7 @@ class NotificationFailed
     public $data = [];
 
     /**
-     * 创建一个事件实例
+     * Create a new event instance.
      *
      * @param  mixed  $notifiable
      * @param  \Illuminate\Notifications\Notification  $notification

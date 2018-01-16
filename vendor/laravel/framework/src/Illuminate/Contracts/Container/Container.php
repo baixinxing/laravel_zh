@@ -8,7 +8,7 @@ use Psr\Container\ContainerInterface;
 interface Container extends ContainerInterface
 {
     /**
-     * 确定给定的抽象类型是否已被绑定。
+     * Determine if the given abstract type has been bound.
      *
      * @param  string  $abstract
      * @return bool
