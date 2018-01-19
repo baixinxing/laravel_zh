@@ -9,7 +9,7 @@ use Illuminate\Contracts\Config\Repository as ConfigContract;
 class Repository implements ArrayAccess, ConfigContract
 {
     /**
-     * 所有配置元素
+     * All of the configuration items.
      *
      * @var array
      */

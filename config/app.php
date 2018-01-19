@@ -146,8 +146,10 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         // 日志查看器
-        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
-
+//        Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+        
+        //RabbitMQ
+        VladimirYuldashev\LaravelQueueRabbitMQ\LaravelQueueRabbitMQServiceProvider::class,
     ],
 
     /*

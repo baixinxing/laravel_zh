@@ -5,7 +5,7 @@ namespace App\Events;
 use App\Models\Order;
 use Illuminate\Queue\SerializesModels;
 
-
+//订单出货事件
 class OrderShipped
 {
     use SerializesModels;

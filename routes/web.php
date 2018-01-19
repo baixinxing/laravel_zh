@@ -23,3 +23,5 @@ Route::any('/home', 'HomeController@index')->name('home');
 
 //Queue 1 路由
 Route::get('mail/sendReminderEmail/{id}','MailController@sendReminderEmail');
+
+Route::get('/test','QueuedController@Test');
